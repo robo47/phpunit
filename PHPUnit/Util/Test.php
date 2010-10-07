@@ -351,6 +351,16 @@ class PHPUnit_Util_Test
             $groups = array_merge($groups, $annotations['method']['group']);
         }
 
+        foreach (array('small', 'medium', 'large') as $size) {
+            if (isset($annotations['method'][$size])) {
+                $groups[] = $size;
+            }
+
+            else if (isset($annotations['class'][$size])) {
+                $groups[] = $size;
+            }
+        }
+
         return array_unique($groups);
     }
 
